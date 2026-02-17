@@ -6,3 +6,4 @@ ultralytics
 huggingface_hub
 pytesseract
 langdetect
+deep-translator
