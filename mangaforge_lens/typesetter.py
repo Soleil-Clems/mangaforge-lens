@@ -1,26 +1,30 @@
 from PIL import Image, ImageDraw, ImageFont
 import cv2 as cv
 import numpy as np
+import os
 
+DEFAULT_FONT = "/System/Library/Fonts/Supplemental/Arial.ttf"
 
 class MangaTypesetter:
     def __init__(self, cleaned_image_path: str):
         self.image = Image.open(cleaned_image_path).convert("RGB")
         self.draw = ImageDraw.Draw(self.image)
 
+
     def _fit_text(self, text: str, zone: dict, font_path=None):
+        font_path = font_path or DEFAULT_FONT
         max_w, max_h = zone["w"] - 10, zone["h"] - 10
         font_size = 20
 
         while font_size > 6:
-            font = ImageFont.truetype(font_path, font_size) if font_path else ImageFont.load_default()
+            font = ImageFont.truetype(font_path, font_size)
             lines = self._wrap_text(text, font, max_w)
             total_h = len(lines) * (font_size + 2)
             if total_h <= max_h:
                 return font, lines
             font_size -= 1
 
-        return ImageFont.load_default(), self._wrap_text(text, ImageFont.load_default(), max_w)
+        return ImageFont.truetype(font_path, 6), self._wrap_text(text, ImageFont.truetype(font_path, 6), max_w)
 
     def _wrap_text(self, text: str, font, max_width: int):
         words = text.split()
