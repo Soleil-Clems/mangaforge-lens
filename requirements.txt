@@ -1,0 +1,6 @@
+opencv-python
+Pillow
+numpy
+manga-ocr
+ultralytics
+huggingface_hub
