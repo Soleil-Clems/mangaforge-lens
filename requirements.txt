@@ -4,3 +4,5 @@ numpy
 manga-ocr
 ultralytics
 huggingface_hub
+pytesseract
+langdetect
