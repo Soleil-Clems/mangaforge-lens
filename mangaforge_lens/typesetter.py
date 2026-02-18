@@ -1,7 +1,4 @@
 from PIL import Image, ImageDraw, ImageFont
-import cv2 as cv
-import numpy as np
-import os
 
 DEFAULT_FONT = "/System/Library/Fonts/Supplemental/Arial.ttf"
 

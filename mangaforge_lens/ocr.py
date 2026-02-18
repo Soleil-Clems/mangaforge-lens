@@ -19,14 +19,11 @@ class MangaOCR:
         cropped = self.extract_zone(zone)
         pil_image = Image.fromarray(cv.cvtColor(cropped, cv.COLOR_BGR2RGB))
 
-        # On essaie d'abord avec pytesseract
         text = pytesseract.image_to_string(pil_image).strip()
 
-        # Si rien trouvé on essaie avec manga_ocr (japonais)
         if not text:
             text = self.manga_ocr(pil_image)
 
-        # Détection de la langue
         try:
             language = detect(text)
         except:
