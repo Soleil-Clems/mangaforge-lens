@@ -1,1 +1,7 @@
-models
+models/
+.venv/
+__pycache__/
+*.pyc
+.idea
+#tests/cleaned_scan.jpg
+#tests/final_scan.jpg
